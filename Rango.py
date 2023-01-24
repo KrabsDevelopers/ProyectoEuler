@@ -1,22 +1,22 @@
 from itertools import *
 
-def pairwise(iterable):
+def parejas(iterable):
     "s -> (s0,s1), (s1,s2), (s2, s3), ..."
     a, b = tee(iterable)
     next(b, None)
     return zip(a, b)
 
-def digits(n):
+def digitos(n):
     return list(map(int, str(n)))
 
-def is_increasing(n):
-    return all(prev <= curr for prev, curr in pairwise(digits(n)))
+def num_creciente(n):
+    return all(prev <= curr for prev, curr in parejas(digitos(n)))
 
-def is_decreasing(n):
-    return all(prev >= curr for prev, curr in pairwise(digits(n)))
+def num_decreciente(n):
+    return all(prev >= curr for prev, curr in parejas(digitos(n)))
 
-def is_bouncy(n):
-    return not is_increasing(n) and not is_decreasing(n)
+def num_rebote(n):
+    return not num_creciente(n) and not num_decreciente(n)
 
 def running_total(iterable):
     total = 0
@@ -26,7 +26,7 @@ def running_total(iterable):
 
 def main():
     nums = count(1)
-    bouncy = running_total(map(lambda n: float(is_bouncy(n)), count(1)))
+    bouncy = running_total(map(lambda n: float(num_rebote(n)), count(1)))
     print(next((n for n, b in zip(nums, bouncy) if b / n == 0.99)))
 
 if __name__ == "__main__": main()
