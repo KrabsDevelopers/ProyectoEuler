@@ -12,7 +12,7 @@ def is_bouncy(N):
 
 
 def find():
-    '''Esta función itera los números de forma ascendente para asi poder evaluar la secuencia de cada cifra. '''
+    '''Esta función itera los números de forma ascendente para asi poder llegar al numero necesario de iteraciones y dar una cifra como resultado del 99% de numeros rebote. '''
     start = 1
     total = 0
     bou = 0 
